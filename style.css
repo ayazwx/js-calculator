@@ -51,6 +51,6 @@ table {
 .btn:hover {
     background-color: blue;
 }
-.cachevalue {
+.smallvalue {
     text-align: right;
 }

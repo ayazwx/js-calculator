@@ -4,7 +4,7 @@ var options = document.querySelectorAll("#option");
 var smallValue = document.querySelector('#smallValue');
 var optState = false;
 var opt = "";
-var final = 0;
+var result = 0;
 
 numbers.forEach(number => {
     number.addEventListener('click',showNumber);
@@ -22,37 +22,38 @@ numbers.forEach(number => {
 
 options.forEach(operator => {
     operator.addEventListener('click', calculate);
-    smallValue = value.textContent;
 
     function calculate(){
         optState = true;
         var newOpt = this.textContent;
+        smallValue.textContent = value.textContent;
 
         switch(opt){
             case "+": 
-                value.textContent = final + Number(value.textContent);
+                result = Number(smallValue) + Number(value.textContent);
                 break;
 
             case "-": 
-                value.textContent = final - Number(value.textContent);
+                result = Number(smallValue) - Number(value.textContent);
                 break;
 
             case "*": 
-                value.textContent = final * Number(value.textContent);
+                result = Number(smallValue) * Number(value.textContent);
                 break;
 
             case "/": 
-                value.textContent = final / Number(value.textContent);
+                result = Number(smallValue) / Number(value.textContent);
                 break;
 
             case "=":
-                final = Number(value.textContent);
+                Number(value.textContent) = result;
                 break;
             case "AC":
-                value.textContent = "";
+                value.textContent = "0";
+                smallValue.textContent = "0";
                 break;
         }
-        final = Number(value.textContent);
+        Number(smallValue) = Number(value.textContent);
         opt = newOpt;
     }
 })
